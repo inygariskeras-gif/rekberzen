@@ -234,7 +234,12 @@
 
         /* Hero Section */
         .hero {
-            padding: 70px 0;
+            padding: 60px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        .hero-top {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -325,6 +330,66 @@
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-15px); }
+        }
+
+        /* Promo Showcase Gallery (3 Gambar Beranda) */
+        .hero-promos {
+            margin-top: 20px;
+            background: rgba(18, 18, 22, 0.6);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+        }
+        .hero-promos-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .hero-promos-header h3 {
+            font-size: 20px;
+            color: var(--primary-gold);
+            font-weight: 800;
+        }
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .promo-card {
+            background: #141419;
+            border: 1px solid var(--card-border);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .promo-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-gold);
+            box-shadow: 0 15px 30px rgba(255, 193, 7, 0.25);
+        }
+        .promo-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 1px solid rgba(255,193,7,0.2);
+            object-fit: cover;
+        }
+        .promo-card-body {
+            padding: 15px;
+            text-align: center;
+        }
+        .promo-card-body h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-white);
+            margin-bottom: 5px;
+        }
+        .promo-card-body p {
+            font-size: 12px;
+            color: var(--text-gray);
         }
 
         /* Section Headings */
@@ -693,10 +758,11 @@
 
         /* Responsive Layout Adjustments */
         @media (max-width: 992px) {
-            .hero { flex-direction: column; text-align: center; }
+            .hero-top { flex-direction: column; text-align: center; }
             .hero-desc { margin: 0 auto 30px; }
             .hero-buttons { justify-content: center; }
             .hero-badges { justify-content: center; }
+            .promo-grid { grid-template-columns: 1fr; }
             .why-container { flex-direction: column; text-align: center; }
             .biaya-container { flex-direction: column; }
             .cta-bottom { flex-direction: column; text-align: center; gap: 20px; }
@@ -751,34 +817,71 @@
 
     <!-- Hero Section -->
     <section class="hero container" id="beranda">
-        <div class="hero-text">
-            <h1 class="hero-title-main">REKBER ZEN</h1>
-            <h2 class="hero-subtitle-main">Jasa Rekening Bersama<br>Aman, Cepat & Terpercaya</h2>
-            <p class="hero-desc">Lindungi setiap transaksi akun digital Anda menggunakan sistem Rekber yang aman dan transparan.</p>
-            <div class="hero-buttons">
-                <button onclick="openModal()" class="btn-3d btn-gold">
-                    <div class="shield-icon" style="width:20px; height:22px; font-size:12px;"></div>
-                    Mulai Rekber
-                </button>
-                <a href="https://wa.me//6285358481367" target="_blank" class="btn-3d btn-green">
-                    <i class="fab fa-whatsapp" style="font-size:18px;"></i>
-                    Chat WhatsApp
-                </a>
-            </div>
-            <div class="hero-badges">
-                <div class="badge-item">
-                    <span class="dot-green"></span> Admin Online 24 Jam
+        <div class="hero-top">
+            <div class="hero-text">
+                <h1 class="hero-title-main">REKBER ZEN</h1>
+                <h2 class="hero-subtitle-main">Jasa Rekening Bersama<br>Aman, Cepat & Terpercaya</h2>
+                <p class="hero-desc">Lindungi setiap transaksi akun digital Anda menggunakan sistem Rekber yang aman dan transparan.</p>
+                <div class="hero-buttons">
+                    <button onclick="openModal()" class="btn-3d btn-gold">
+                        <div class="shield-icon" style="width:20px; height:22px; font-size:12px;"></div>
+                        Mulai Rekber
+                    </button>
+                    <a href="https://wa.me//6285358481367" target="_blank" class="btn-3d btn-green">
+                        <i class="fab fa-whatsapp" style="font-size:18px;"></i>
+                        Chat WhatsApp
+                    </a>
                 </div>
-                <div class="badge-item">
-                    <i class="fas fa-bolt" style="color:var(--primary-gold)"></i> Respon < 1 Menit
+                <div class="hero-badges">
+                    <div class="badge-item">
+                        <span class="dot-green"></span> Admin Online 24 Jam
+                    </div>
+                    <div class="badge-item">
+                        <i class="fas fa-bolt" style="color:var(--primary-gold)"></i> Respon < 1 Menit
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-3d-card">
+                    <i class="fas fa-shield-alt hero-3d-shield"></i>
+                    <div style="font-weight: 800; color: var(--primary-gold); letter-spacing: 1px;">SECURE TRANSACTION</div>
+                    <div style="font-size: 12px; color: var(--text-gray); margin-top: 5px;">100% Protected</div>
                 </div>
             </div>
         </div>
-        <div class="hero-visual">
-            <div class="hero-3d-card">
-                <i class="fas fa-shield-alt hero-3d-shield"></i>
-                <div style="font-weight: 800; color: var(--primary-gold); letter-spacing: 1px;">SECURE TRANSACTION</div>
-                <div style="font-size: 12px; color: var(--text-gray); margin-top: 5px;">100% Protected</div>
+
+        <!-- Galeri Promo Beranda (3 Gambar Utama) -->
+        <div class="hero-promos">
+            <div class="hero-promos-header">
+                <h3><i class="fas fa-tags"></i> Promo & Layanan Spesial Kami</h3>
+            </div>
+            <div class="promo-grid">
+                <!-- Promo 1: Sewa Kostum -->
+                <div class="promo-card">
+                    <img src="WhatsApp Image 2026-07-31 at 02.28.41.jpeg" alt="RBC Cosrent - Sewa Kostum Anime dan Game">
+                    <div class="promo-card-body">
+                        <h4>Sewa Kostum Anime & Game</h4>
+                        <p>Tersedia ratusan kostum pilihan terbaik di RBC COSRENT.</p>
+                    </div>
+                </div>
+
+                <!-- Promo 2: Kuota XL & AXIS -->
+                <div class="promo-card">
+                    <img src="WhatsApp Image 2026-07-31 at 02.28.42.jpeg" alt="Kuota XL dan AXIS Murah">
+                    <div class="promo-card-body">
+                        <h4>Kuota XL & AXIS 24 Jam</h4>
+                        <p>Full Kuota Utama tanpa pembagian masa aktif 28 hari.</p>
+                    </div>
+                </div>
+
+                <!-- Promo 3: Kuota Indosat & Three -->
+                <div class="promo-card">
+                    <img src="WhatsApp Image 2026-07-31 at 02.28.42 (1).jpeg" alt="Kuota Indosat dan Three Murah">
+                    <div class="promo-card-body">
+                        <h4>Kuota Indosat & Three</h4>
+                        <p>Paket kuota besar harga hemat untuk penggunaan 28 hari.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -870,12 +973,12 @@
                 <p>Layanan Rekber khusus transaksi penyewaan costume anime dan cosplay.</p>
             </a>
 
-            <!-- Kota Internet XL, Axis, Indosat, Tri TERRMURAH -->
+            <!-- Kuota Internet XL, Axis, Indosat, Tri TERRMURAH -->
             <a href="javascript:void(0)" onclick="openModal()" class="service-card">
                 <div class="service-icon-3d">
                     <i class="fas fa-wifi"></i>
                 </div>
-                <h3>Kota internet XL, Axis, Indosat, Tri TERRMURAH</h3>
+                <h3>Kuota internet XL, Axis, Indosat, Tri TERRMURAH</h3>
                 <p>Paket data murah dan cepat untuk kebutuhan internet Anda.</p>
             </a>
         </div>
