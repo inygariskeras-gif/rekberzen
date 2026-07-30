@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REKBER ZEN - Aman, Cepat & Terpercaya</title>
+    <!-- FontAwesome & Font Google -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-gold: #ffc107;
+            --primary-gold-glow: #ffe066;
+            --secondary-gold: #d4af37;
+            --dark-bg: #08080a;
+            --card-bg: rgba(18, 18, 22, 0.7);
+            --card-border: rgba(255, 193, 7, 0.3);
+            --green-wa: #25d366;
+            --text-white: #ffffff;
+            --text-gray: #a0a0ab;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-white);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 193, 7, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 193, 7, 0.05) 0%, transparent 40%);
+        }
+
+        /* Container Limit */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Modal Choice Style */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: #141419;
+            border: 2px solid var(--primary-gold);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 0 30px rgba(255, 193, 7, 0.3);
+            transform: translateY(-20px);
+            animation: modalFadeIn 0.3s forwards;
+        }
+        @keyframes modalFadeIn {
+            to { transform: translateY(0); }
+        }
+        .modal-content h3 {
+            margin-bottom: 20px;
+            color: var(--primary-gold);
+        }
+        .modal-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .btn-modal {
+            padding: 12px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+        .btn-modal.fb {
+            background: #1877f2;
+            color: white;
+            box-shadow: 0 5px 15px rgba(24, 119, 242, 0.4);
+        }
+        .btn-modal.wa {
+            background: var(--green-wa);
+            color: white;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        }
+        .btn-modal:hover {
+            transform: scale(1.05);
+        }
+        .close-modal {
+            margin-top: 15px;
+            background: transparent;
+            border: none;
+            color: var(--text-gray);
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        /* 3D Gold Logo */
+        .logo-3d {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        .shield-icon {
+            width: 45px;
+            height: 50px;
+            background: linear-gradient(135deg, #ffd700, #b8860b);
+            clip-path: polygon(50% 0%, 100% 20%, 100% 75%, 50% 100%, 0% 75%, 0% 20%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+        }
+        .shield-icon::after {
+            content: 'Z';
+            font-size: 26px;
+            font-weight: 900;
+            color: #000;
+            text-shadow: 1px 1px 0px rgba(255,255,255,0.5);
+        }
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        .logo-text .title {
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--primary-gold);
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
+        }
+        .logo-text .subtitle {
+            font-size: 10px;
+            color: var(--text-white);
+            letter-spacing: 0.5px;
+        }
+
+        /* Header / Navbar */
+        header {
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(8, 8, 10, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 193, 7, 0.1);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        .nav-links a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-gold);
+            text-shadow: 0 0 8px rgba(255, 193, 7, 0.6);
+        }
+
+        /* Buttons 3D Style */
+        .btn-3d {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 14px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            border: none;
+        }
+        .btn-gold {
+            background: linear-gradient(135deg, #ffe066, #ffc107, #d4af37);
+            color: #000;
+            box-shadow: 0 6px 0 #997a00, 0 12px 20px rgba(255, 193, 7, 0.4);
+        }
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 9px 0 #997a00, 0 15px 25px rgba(255, 193, 7, 0.6);
+        }
+        .btn-gold:active {
+            transform: translateY(3px);
+            box-shadow: 0 3px 0 #997a00, 0 6px 10px rgba(255, 193, 7, 0.4);
+        }
+
+        .btn-green {
+            background: linear-gradient(135deg, #2bf076, #25d366, #1da851);
+            color: #fff;
+            box-shadow: 0 6px 0 #137337, 0 12px 20px rgba(37, 211, 102, 0.4);
+        }
+        .btn-green:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 9px 0 #137337, 0 15px 25px rgba(37, 211, 102, 0.6);
+        }
+        .btn-green:active {
+            transform: translateY(3px);
+            box-shadow: 0 3px 0 #137337, 0 6px 10px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 70px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+        .hero-text {
+            flex: 1;
+        }
+        .hero-title-main {
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--primary-gold);
+            line-height: 1.1;
+            text-shadow: 0 0 20px rgba(255, 193, 7, 0.4);
+            margin-bottom: 10px;
+        }
+        .hero-subtitle-main {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        .hero-desc {
+            color: var(--text-gray);
+            font-size: 16px;
+            max-width: 480px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        .hero-badges {
+            display: flex;
+            gap: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .badge-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .dot-green {
+            width: 10px;
+            height: 10px;
+            background-color: var(--green-wa);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--green-wa);
+        }
+
+        /* Hero 3D Graphic Visual Replacement */
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            perspective: 1000px;
+        }
+        .hero-3d-card {
+            width: 320px;
+            height: 380px;
+            background: linear-gradient(145deg, rgba(255,193,7,0.15), rgba(0,0,0,0.8));
+            border: 2px solid var(--primary-gold);
+            border-radius: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.9), 0 0 30px rgba(255, 193, 7, 0.3);
+            transform: rotateY(-10deg) rotateX(10deg);
+            transition: transform 0.5s;
+            position: relative;
+        }
+        .hero-3d-card:hover {
+            transform: rotateY(0deg) rotateX(0deg) scale(1.02);
+        }
+        .hero-3d-shield {
+            font-size: 100px;
+            color: var(--primary-gold);
+            filter: drop-shadow(0 0 20px rgba(255,193,7,0.8));
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Section Headings */
+        .section-header {
+            text-align: center;
+            margin: 60px 0 40px;
+            position: relative;
+        }
+        .section-header h2 {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary-gold);
+            display: inline-block;
+            position: relative;
+            padding: 0 20px;
+        }
+        .section-header h2::before, .section-header h2::after {
+            content: '♦';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-gold);
+            font-size: 14px;
+        }
+        .section-header h2::before { left: -10px; }
+        .section-header h2::after { right: -10px; }
+
+        /* Cara Kerja Section */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+            position: relative;
+        }
+        .step-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 15px;
+            padding: 20px 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .step-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-gold);
+            box-shadow: 0 15px 30px rgba(255, 193, 7, 0.2);
+        }
+        .step-num {
+            width: 28px;
+            height: 28px;
+            border: 2px solid var(--primary-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            font-weight: 800;
+            font-size: 14px;
+            color: var(--primary-gold);
+        }
+        .step-icon {
+            font-size: 32px;
+            color: var(--primary-gold);
+            margin-bottom: 12px;
+        }
+        .step-card h4 {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        .step-card p {
+            font-size: 11px;
+            color: var(--text-gray);
+            line-height: 1.4;
+        }
+
+        /* Layanan Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .service-card {
+            background: linear-gradient(180deg, rgba(255,193,7,0.05) 0%, rgba(18,18,22,0.8) 100%);
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+            padding: 25px 15px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-white);
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+        }
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--primary-gold);
+            box-shadow: 0 15px 35px rgba(255, 193, 7, 0.25);
+        }
+        .service-icon-3d {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.05);
+            box-shadow: inset 0 0 15px rgba(255,255,255,0.1), 0 8px 15px rgba(0,0,0,0.5);
+        }
+        .service-card:nth-child(1) .service-icon-3d { color: #1877f2; }
+        .service-card:nth-child(2) .service-icon-3d { color: #25d366; }
+        .service-card:nth-child(3) .service-icon-3d { color: var(--primary-gold); }
+        .service-card:nth-child(4) .service-icon-3d { color: #e1306c; }
+        .service-card:nth-child(5) .service-icon-3d { color: #00d2ff; }
+
+        .service-card h3 {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .service-card p {
+            font-size: 12px;
+            color: var(--text-gray);
+            line-height: 1.4;
+        }
+
+        /* Kenapa Memilih Section */
+        .why-container {
+            background: radial-gradient(circle at center, rgba(255,193,7,0.1) 0%, rgba(8,8,10,0.9) 70%);
+            border: 1px solid var(--card-border);
+            border-radius: 25px;
+            padding: 40px;
+            margin-top: 50px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+        }
+        .why-graphic {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        .why-shield-3d {
+            font-size: 120px;
+            color: var(--primary-gold);
+            filter: drop-shadow(0 0 30px rgba(255, 193, 7, 0.6));
+        }
+        .why-content {
+            flex: 1.5;
+        }
+        .why-content h2 {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--primary-gold);
+            margin-bottom: 25px;
+        }
+        .why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .why-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        .why-item i {
+            width: 24px;
+            height: 24px;
+            background: var(--primary-gold);
+            color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            box-shadow: 0 0 10px var(--primary-gold);
+        }
+
+        /* Biaya Rekber Section */
+        .biaya-container {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            margin-top: 30px;
+        }
+        .table-wrapper {
+            flex: 1.2;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        th, td {
+            padding: 12px 20px;
+            font-size: 13px;
+        }
+        th {
+            background: rgba(255, 193, 7, 0.15);
+            color: var(--primary-gold);
+            font-weight: 700;
+            border-bottom: 1px solid var(--card-border);
+        }
+        td {
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: #ddd;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tr:nth-child(even) {
+            background: rgba(255,255,255,0.02);
+        }
+        .biaya-graphic {
+            flex: 0.8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .wallet-3d {
+            font-size: 110px;
+            color: var(--primary-gold);
+            filter: drop-shadow(0 0 25px rgba(255, 193, 7, 0.5));
+        }
+
+        /* Call To Action Bottom */
+        .cta-bottom {
+            margin: 70px 0;
+            background: linear-gradient(135deg, rgba(255,193,7,0.1), rgba(18,18,22,0.9));
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 35px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+        }
+        .cta-text h2 {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--primary-gold);
+            margin-bottom: 8px;
+        }
+        .cta-text p {
+            color: var(--text-gray);
+            font-size: 14px;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background: #040405;
+            border-top: 1px solid rgba(255, 193, 7, 0.1);
+            padding: 40px 0 20px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        .footer-col h4 {
+            color: var(--text-white);
+            font-size: 14px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .footer-links {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        .footer-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-size: 12px;
+            transition: 0.3s;
+        }
+        .footer-links a:hover {
+            color: var(--primary-gold);
+        }
+        .contact-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+        .contact-box i {
+            font-size: 24px;
+            color: var(--green-wa);
+        }
+        .contact-info .number {
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .contact-info .status {
+            font-size: 11px;
+            color: var(--text-gray);
+        }
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+        .social-btn {
+            width: 32px;
+            height: 32px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-white);
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .social-btn:hover {
+            background: var(--primary-gold);
+            color: #000;
+        }
+
+        /* Floating WA Button */
+        .floating-wa {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background: var(--green-wa);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5);
+            text-decoration: none;
+            z-index: 99;
+            transition: transform 0.3s;
+        }
+        .floating-wa:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsive Layout Adjustments */
+        @media (max-width: 992px) {
+            .hero { flex-direction: column; text-align: center; }
+            .hero-desc { margin: 0 auto 30px; }
+            .hero-buttons { justify-content: center; }
+            .hero-badges { justify-content: center; }
+            .why-container { flex-direction: column; text-align: center; }
+            .biaya-container { flex-direction: column; }
+            .cta-bottom { flex-direction: column; text-align: center; gap: 20px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Modal Pilihan Rekber Mulai -->
+    <div class="modal-overlay" id="mulaiModal">
+        <div class="modal-content">
+            <h3>Pilih Saluran Rekber</h3>
+            <div class="modal-buttons">
+                <a href="https://www.facebook.com/deni.ekanata.315" target="_blank" class="btn-modal fb">
+                    <i class="fab fa-facebook-f"></i> Facebook
+                </a>
+                <a href="https://wa.me//6285358481367" target="_blank" class="btn-modal wa">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+            <button class="close-modal" onclick="closeModal()">Tutup</button>
+        </div>
+    </div>
+
+    <!-- Header / Nav -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo-3d">
+                    <div class="shield-icon"></div>
+                    <div class="logo-text">
+                        <span class="title">REKBER ZEN</span>
+                        <span class="subtitle">Aman, Cepat & Terpercaya</span>
+                    </div>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#beranda" class="active">Beranda</a></li>
+                    <li><a href="#layanan">Layanan</a></li>
+                    <li><a href="#cara-kerja">Cara Kerja</a></li>
+                    <li><a href="#biaya">Biaya</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#kontak">Kontak</a></li>
+                </ul>
+                <button onclick="openModal()" class="btn-3d btn-gold">
+                    <div class="shield-icon" style="width:20px; height:22px; font-size:12px;"></div>
+                    Mulai Rekber
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero container" id="beranda">
+        <div class="hero-text">
+            <h1 class="hero-title-main">REKBER ZEN</h1>
+            <h2 class="hero-subtitle-main">Jasa Rekening Bersama<br>Aman, Cepat & Terpercaya</h2>
+            <p class="hero-desc">Lindungi setiap transaksi akun digital Anda menggunakan sistem Rekber yang aman dan transparan.</p>
+            <div class="hero-buttons">
+                <button onclick="openModal()" class="btn-3d btn-gold">
+                    <div class="shield-icon" style="width:20px; height:22px; font-size:12px;"></div>
+                    Mulai Rekber
+                </button>
+                <a href="https://wa.me//6285358481367" target="_blank" class="btn-3d btn-green">
+                    <i class="fab fa-whatsapp" style="font-size:18px;"></i>
+                    Chat WhatsApp
+                </a>
+            </div>
+            <div class="hero-badges">
+                <div class="badge-item">
+                    <span class="dot-green"></span> Admin Online 24 Jam
+                </div>
+                <div class="badge-item">
+                    <i class="fas fa-bolt" style="color:var(--primary-gold)"></i> Respon < 1 Menit
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-3d-card">
+                <i class="fas fa-shield-alt hero-3d-shield"></i>
+                <div style="font-weight: 800; color: var(--primary-gold); letter-spacing: 1px;">SECURE TRANSACTION</div>
+                <div style="font-size: 12px; color: var(--text-gray); margin-top: 5px;">100% Protected</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cara Kerja Rekber -->
+    <section class="container" id="cara-kerja">
+        <div class="section-header">
+            <h2>Cara Kerja Rekber</h2>
+        </div>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-num">1</div>
+                <i class="fas fa-handshake step-icon"></i>
+                <h4>Pembeli & Penjual Sepakat</h4>
+                <p>Melakukan kesepakatan mengenai harga dan ketentuan transaksi.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">2</div>
+                <i class="fas fa-credit-card step-icon"></i>
+                <h4>Pembeli Transfer ke Rekber</h4>
+                <p>Pembeli mengirim dana ke rekening resmi Rekber ZEN.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">3</div>
+                <i class="fas fa-shield-check step-icon"></i>
+                <h4>Admin Konfirmasi Dana Masuk</h4>
+                <p>Admin memverifikasi pembayaran dan menginformasikan kepada kedua pihak.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">4</div>
+                <i class="fas fa-paper-plane step-icon"></i>
+                <h4>Penjual Mengirim Akun</h4>
+                <p>Penjual menyerahkan akun kepada pembeli.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">5</div>
+                <i class="fas fa-badge-check step-icon"></i>
+                <h4>Pembeli Konfirmasi DONE</h4>
+                <p>Pembeli memastikan akun telah diterima sesuai kesepakatan.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">6</div>
+                <i class="fas fa-sack-dollar step-icon"></i>
+                <h4>Dana Dicairkan ke Penjual</h4>
+                <p>Dana diteruskan kepada penjual setelah transaksi selesai.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Layanan Kami -->
+    <section class="container" id="layanan">
+        <div class="section-header">
+            <h2>Layanan Kami</h2>
+        </div>
+        <div class="services-grid">
+            <!-- Rekber Facebook -->
+            <a href="https://www.facebook.com/deni.ekanata.315" target="_blank" class="service-card">
+                <div class="service-icon-3d">
+                    <i class="fab fa-facebook-square"></i>
+                </div>
+                <h3>Rekber Facebook</h3>
+                <p>Transaksi jual beli akun Facebook secara aman.</p>
+            </a>
+
+            <!-- Rekber WhatsApp -->
+            <a href="https://wa.me//6285358481367" target="_blank" class="service-card">
+                <div class="service-icon-3d">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <h3>Rekber WhatsApp</h3>
+                <p>Transaksi jual beli akun WhatsApp dengan sistem Rekber.</p>
+            </a>
+
+            <!-- Jasa Posting Rekber ZEN -->
+            <a href="javascript:void(0)" onclick="openModal()" class="service-card">
+                <div class="service-icon-3d">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <h3>Jasa Posting Rekber ZEN</h3>
+                <p>Membantu memposting agar lebih cepat menemukan calon pembeli maupun penjual.</p>
+            </a>
+
+            <!-- Instagram Rental Costume Anime / Cosplay -->
+            <a href="https://www.instagram.com/rbc_cosrent?igsh=aG5sYmppZmNia2R4" target="_blank" class="service-card">
+                <div class="service-icon-3d">
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <h3>Instagram Rental Costume Anime / Cosplay</h3>
+                <p>Layanan Rekber khusus transaksi penyewaan costume anime dan cosplay.</p>
+            </a>
+
+            <!-- Kota Internet XL, Axis, Indosat, Tri TERRMURAH -->
+            <a href="javascript:void(0)" onclick="openModal()" class="service-card">
+                <div class="service-icon-3d">
+                    <i class="fas fa-wifi"></i>
+                </div>
+                <h3>Kota internet XL, Axis, Indosat, Tri TERRMURAH</h3>
+                <p>Paket data murah dan cepat untuk kebutuhan internet Anda.</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Kenapa Memilih Rekber ZEN? -->
+    <section class="container">
+        <div class="why-container">
+            <div class="why-graphic">
+                <i class="fas fa-shield-alt why-shield-3d"></i>
+            </div>
+            <div class="why-content">
+                <h2>Kenapa Memilih Rekber ZEN?</h2>
+                <div class="why-grid">
+                    <div class="why-item"><i class="fas fa-check"></i> Transaksi Aman</div>
+                    <div class="why-item"><i class="fas fa-check"></i> Admin Online 24 Jam</div>
+                    <div class="why-item"><i class="fas fa-check"></i> Sistem Transparan</div>
+                    <div class="why-item"><i class="fas fa-check"></i> Admin Berpengalaman</div>
+                    <div class="why-item"><i class="fas fa-check"></i> Fast Response</div>
+                    <div class="why-item"><i class="fas fa-check"></i> Proses Cepat</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Biaya Rekber -->
+    <section class="container" id="biaya">
+        <div class="section-header">
+            <h2>Biaya Rekber</h2>
+        </div>
+        <div class="biaya-container">
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nilai Transaksi</th>
+                            <th>Fee</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Rp1.000 - Rp49.000</td>
+                            <td>Rp2.000</td>
+                        </tr>
+                        <tr>
+                            <td>Rp50.000 - Rp99.000</td>
+                            <td>Rp3.000</td>
+                        </tr>
+                        <tr>
+                            <td>Rp100.000 - Rp199.000</td>
+                            <td>Rp5.000</td>
+                        </tr>
+                        <tr>
+                            <td>Rp200.000 - Rp299.000</td>
+                            <td>Rp8.000</td>
+                        </tr>
+                        <tr>
+                            <td>Rp300.000 - Rp599.000</td>
+                            <td>Rp10.000</td>
+                        </tr>
+                        <tr>
+                            <td>Rp600.000 - Rp999.000</td>
+                            <td>Rp20.000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="biaya-graphic">
+                <i class="fas fa-wallet wallet-3d"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call To Action -->
+    <section class="container">
+        <div class="cta-bottom">
+            <div class="cta-text">
+                <h2>Siap Melakukan Transaksi?</h2>
+                <p>Gunakan layanan Rekber ZEN agar transaksi lebih aman, terpercaya, dan bebas khawatir.</p>
+            </div>
+            <div class="cta-buttons">
+                <button onclick="openModal()" class="btn-3d btn-gold">
+                    <div class="shield-icon" style="width:20px; height:22px; font-size:12px;"></div>
+                    Mulai Rekber
+                </button>
+                <a href="https://wa.me//6285358481367" target="_blank" class="btn-3d btn-green">
+                    <i class="fab fa-whatsapp" style="font-size:18px;"></i>
+                    Chat WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="kontak">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo-3d" style="margin-bottom:15px;">
+                        <div class="shield-icon"></div>
+                        <div class="logo-text">
+                            <span class="title">REKBER ZEN</span>
+                            <span class="subtitle">Aman, Cepat & Terpercaya</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="footer-col">
+                    <h4>Menu</h4>
+                    <ul class="footer-links">
+                        <li><a href="#beranda">Beranda</a></li>
+                        <li><a href="#biaya">Biaya</a></li>
+                        <li><a href="#layanan">Layanan</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#cara-kerja">Cara Kerja</a></li>
+                        <li><a href="#kontak">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Hubungi Kami</h4>
+                    <div class="contact-box">
+                        <i class="fab fa-whatsapp"></i>
+                        <div class="contact-info">
+                            <div class="number">0853 5848 1367</div>
+                            <div class="status">Online 24 Jam</div>
+                        </div>
+                    </div>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/deni.ekanata.315" target="_blank" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/rbc_cosrent?igsh=aG5sYmppZmNia2R4" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me//6285358481367" target="_blank" class="floating-wa">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Modal Script -->
+    <script>
+        function openModal() {
+            document.getElementById('mulaiModal').style.display = 'flex';
+        }
+        function closeModal() {
+            document.getElementById('mulaiModal').style.display = 'none';
+        }
+        // Close modal when clicking outside content
+        window.onclick = function(event) {
+            let modal = document.getElementById('mulaiModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
